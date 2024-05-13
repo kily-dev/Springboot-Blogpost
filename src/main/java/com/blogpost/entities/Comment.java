@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -20,5 +21,5 @@ public class Comment {
     @OneToOne
     private User author;
     private String content;
-    private Date creationDate;
+    private LocalDateTime creationDate;
 }

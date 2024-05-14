@@ -26,7 +26,7 @@ public class Post {
     private List<Comment> comments;
     @ManyToOne
     private Category category;
-    private String imageUrl;
+    private String image;
     @OneToMany
     private List<User> likedBy;
     private LocalDateTime postedOn;

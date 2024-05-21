@@ -24,7 +24,8 @@ public class PostController {
 
         Page<Post> pagePosts = postRepository.findAll(PageRequest.of(p,s,Sort.unsorted()));
         model.addAttribute("listPosts",pagePosts.getContent());
-
+        int[] pages=new int[pagePosts.getTotalPages()];
+        model.addAttribute("pages",pages);
         return  "post";
     }
 }

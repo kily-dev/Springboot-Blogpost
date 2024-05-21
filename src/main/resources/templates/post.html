@@ -9,22 +9,31 @@
 
 
     <body>
-        <h1>Test</h1>
-        <table border="1">
-            <thead>
-                 <tr>
-                     <th>ID</th><th>title</th><th>content</th>
-                 </tr>
-            </thead>
+        <div>
+            <h1>Test</h1>
+            <table border="1">
+                <thead>
+                     <tr>
+                         <th>ID</th><th>title</th><th>content</th>
+                     </tr>
+                </thead>
 
-            <tbody>
-                <tr th:each = "p:${listPosts}">
-                    <td th:text="${p.id}"></td>
-                    <td th:text="${p.title}"></td>
-                     <td th:text="${p.content}"></td>
-                </tr>
-            </tbody>
-        </table>
+                <tbody>
+                    <tr th:each = "p:${listPosts}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.title}"></td>
+                         <td th:text="${p.content}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <ul>
+                <li th:each="pa,status:${pages}">
+                    <a th:href="@{index(page=${status.index})}"  th:text="${status.index}"></a>
+                </li>
+            </ul>
+        </div>
             <p>This is a very basic example of an HTML page.</p>
             <p>You can replace this content with your own.</p>
             <a href="https://www.example.com">Visit Example.com</a>

@@ -16,7 +16,8 @@ public class PostController {
 
     @RequestMapping(value = "/index")
     public String index(Model model){
-        //List<Post> posts=PostRepository.findAll();
+        List<Post> posts= (List<Post>) postRepository.findAll();
+        model.addAttribute("listPosts",posts);
         return  "post";
     }
 }

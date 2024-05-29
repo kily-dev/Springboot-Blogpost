@@ -10,6 +10,14 @@
 
     <body>
         <div>
+            <form th:action="@{index}" method="get">
+                <label>Search : </label>
+                <input type="text" name="motcle" th:value="${motcle}"/>
+                <button>chetcher</button>
+            </form>
+        </div>
+
+        <div>
             <h1>Test</h1>
             <table border="1">
                 <thead>
@@ -23,6 +31,8 @@
                         <td th:text="${p.id}"></td>
                         <td th:text="${p.title}"></td>
                          <td th:text="${p.content}"></td>
+                        <td><a onclick="return alert('etes vous sure?')" th:href="@{delete(id=${p.id},page=${pagesCourante},size=${size},motcle=${size})}" >Delete</a></td>
+
                     </tr>
                 </tbody>
             </table>
@@ -30,7 +40,7 @@
         <div>
             <ul>
                 <li th:each="pa,status:${pages}">
-                    <a th:href="@{index(page=${status.index})}"  th:text="${status.index}"></a>
+                    <a th:href="@{index(page=${status.index},size=${size},motcle=${motcle})}"  th:text="${status.index}"></a>
                 </li>
             </ul>
         </div>

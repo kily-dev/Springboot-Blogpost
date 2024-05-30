@@ -26,7 +26,7 @@
             <table border="1">
                 <thead>
                      <tr>
-                         <th>ID</th><th>title</th><th>content</th>
+                         <th>ID</th><th>title</th><th>Images</th><th>content</th>
                      </tr>
                 </thead>
 
@@ -34,6 +34,10 @@
                     <tr th:each = "p:${listPosts}">
                         <td th:text="${p.id}"></td>
                         <td th:text="${p.title}"></td>
+                        <td>
+
+                            <img th:src="@{'/images/' + ${p.image}}" style="width: 100px; height: 100px;" >
+                        </td>
                          <td th:text="${p.content}"></td>
                         <td><a th:href="@{edit(id=${p.id})}">Edit</a></td>
                         <td><a onclick="return alert('etes vous sure?')"

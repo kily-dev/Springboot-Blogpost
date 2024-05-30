@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,10 +26,9 @@ public class Post {
     private List<Comment> comments;
     @ManyToOne
     private Category category;
-    @Column(length = 64)
     private String image;
     @OneToMany
     private List<User> likedBy;
-    private LocalDateTime postedOn;
+    private Date postedOn;
 
 }

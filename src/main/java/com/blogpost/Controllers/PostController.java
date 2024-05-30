@@ -58,12 +58,16 @@ public class PostController {
         return "addpost";
     }
 
-   /* @RequestMapping(value="/edit", method=RequestMethod.GET)
+    @RequestMapping(value="/edit", method=RequestMethod.GET)
     public String editer(Model model, int id){
-            Optional<Post> p = postRepository.findById(id);
-        model.addAttribute("produit", p);
+        Optional<Post> p = postRepository.findById(id);
+        model.addAttribute("post", p.get());
         return "editProduit";
-    } */
+    }
 
+    @RequestMapping(value="/")
+    public String home(){
+        return "redirect:/index";
+    }
 }
 

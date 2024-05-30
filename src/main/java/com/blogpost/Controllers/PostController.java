@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -100,11 +101,66 @@ public class PostController {
 
 
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public String editer(Model model, int id){
-        Optional<Post> p = postRepository.findById(id);
-        model.addAttribute("post", p.get());
+    public String editer(Model model,@RequestParam int id){
+        Post p = postRepository.findById(id).get();
+        model.addAttribute("post", p);
+
+        PostDTO postDTO = new PostDTO();
+        postDTO.setTitle(p.getTitle());
+        postDTO.setContent(p.getContent());
+
+        model.addAttribute("postDTO",postDTO);
+
+
         return "editProduit";
     }
+
+    @RequestMapping(value="/edit", method=RequestMethod.POST)
+    public String update(Model model,@RequestParam int id ,@Valid @ModelAttribute
+    PostDTO postDTO, BindingResult result) {
+        Post p = postRepository.findById(id).get();
+        model.addAttribute("post", p);
+        if (result.hasErrors()) {
+            return "editProduit";
+        }
+
+        if (!postDTO.getImage().isEmpty()) {
+            // delete old image
+            String uploadDir = "public/images/";
+            Path oldImagePath = Paths.get(uploadDir + p.getImage());
+
+            try {
+                Files.delete(oldImagePath);
+            } catch (Exception ex) {
+                System.out.println("Exception: " + ex.getMessage());
+            }
+
+            // save new image file
+            MultipartFile image = postDTO.getImage();
+            Date postedOn = new Date();
+            String storageFileName = postedOn.getTime() + "_" + image.getOriginalFilename();
+
+            try (InputStream inputStream = image.getInputStream()) {
+                Files.copy(inputStream, Paths.get(uploadDir + storageFileName), StandardCopyOption.REPLACE_EXISTING);
+            } catch(IOException ex){
+                System.out.println("Exeption:" + ex.getMessage());
+            }
+
+            p.setImage(storageFileName);
+
+            p.setTitle(postDTO.getTitle());
+            p.setContent(postDTO.getContent());
+
+            postRepository.save(p);
+
+
+        }
+
+
+        return "redirect:/index";
+    }
+
+
 
     @RequestMapping(value="/")
     public String home(){

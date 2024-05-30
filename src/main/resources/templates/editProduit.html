@@ -4,7 +4,7 @@
       layout:decorator="layout">
 <head>
     <meta charset="utf-8" />
-    <title>Ajouter des postes</title>
+    <title>modifier le poste</title>
 
 </head>
 <body>
@@ -14,26 +14,30 @@
         <div >
             <div >Saisie d'un poste</div> <br/>
             <div >
-                <form th:action="@{form}" method="post">
+                <form method="post" enctype="multipart/form-data" th:object="${postDTO}">
                     <div class="form-group">
                         <label class="control-label">ID: </label>
-                        <input class="form-control" type="text" name="id" th:value="${post.id}">
+                        <input  type="text" name="id" th:value="${post.id}">
                         <span class="red" th:errors="${post.id}"></span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Title: </label>
-                        <input class="form-control" type="text" name="title" th:value="${post.title}">
-                        <span class="red" th:errors="${post.title}"></span>
+                        <input readonly type="text" name="title" th:field="${postDTO.title}">
+                        <span class="red" th:errors="${postDTO.title}"></span>
                     </div>
                     <div class="form-group">
                         <label >Content: </label>
-                        <input type="text" name="content" th:value="${post.content}">
-                        <span  th:errors="${post.content}"></span>
+                        <input type="text" name="content" th:field="${postDTO.content}">
+                        <span  th:errors="${postDTO.content}"></span>
                     </div>
+                    <div>
+                        <img th:src="@{'/images/' + ${post.image}}" style="width: 100px; height: 100px;" >
+                    </div>
+
                     <div class="form-group">
                         <label >image : </label>
-                        <input  type="text" name="image" th:value="${post.image}">
-                        <span  th:errors="${post.image}"></span>
+                        <input  type="file" name="file" th:field="${postDTO.image}">
+                        <span  th:errors="${postDTO.image}"></span>
                     </div>
                     <div>
                         <button type="submit" >Save</button>

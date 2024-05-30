@@ -14,7 +14,7 @@
         <div >
             <div >Saisie d'un poste</div> <br/>
             <div >
-                <form method="post" enctype="multipart/form-data" th:object="${postDT}">
+                <form method="post" enctype="multipart/form-data" th:object="${postDTO}">
                     <div class="form-group">
                         <label class="control-label">Title: </label>
                         <input  type="text" name="title" th:field="${postDTO.title}">

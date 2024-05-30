@@ -65,5 +65,10 @@ public class PostController {
         return "editProduit";
     } */
 
+    @RequestMapping(value="/tailwind")
+    public String tailwind(Model model){
+        return "homepage";
+    }
+
 }
 

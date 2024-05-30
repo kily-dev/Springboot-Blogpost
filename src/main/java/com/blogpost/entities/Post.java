@@ -25,6 +25,7 @@ public class Post {
     private List<Comment> comments;
     @ManyToOne
     private Category category;
+    @Column(length = 64)
     private String image;
     @OneToMany
     private List<User> likedBy;

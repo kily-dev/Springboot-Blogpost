@@ -65,7 +65,7 @@ public class PostController {
 
     @RequestMapping(value="/tailwind")
     public String tailwind(Model model){
-        return "blog";
+        return "categories";
     }
 
 }

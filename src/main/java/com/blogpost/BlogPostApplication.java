@@ -19,9 +19,6 @@ public class BlogPostApplication {
         ApplicationContext ctx = SpringApplication.run(BlogPostApplication.class, args);
         PostRepository postRepository=ctx.getBean(PostRepository.class);
         UserRepository userRepository=ctx.getBean(UserRepository.class);
-        userRepository.save(new User(0,"ahmed","123","adnane","mortabit","ad@gmail.com","0605508808","la ville kenitra",new ArrayList<>(),new ArrayList<>()));
-        userRepository.save(new User());
-        postRepository.save(new Post(0,"hhr","hello my friend how are you this the content .",null,null,null,null,null, LocalDateTime.now()));
         userRepository.findAll().forEach(p->System.out.println(p.getFirstName()));
 
     }

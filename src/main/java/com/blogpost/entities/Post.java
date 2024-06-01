@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,6 @@ public class Post {
     private String image;
     @OneToMany
     private List<User> likedBy;
-    private LocalDateTime postedOn;
+    private Date postedOn;
 
 }

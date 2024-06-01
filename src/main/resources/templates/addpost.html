@@ -5,30 +5,29 @@
 <head>
     <meta charset="utf-8" />
     <title>Confirmation d'ajout</title>
-
 </head>
 <body>
 <p></p><br />
 <div layout:fragment="content">
     <div class="container">
         <div class="panel panel-default">
-            <div >Confirmation</div> <br/>
+            <div>Confirmation</div> <br/>
             <div class="panel-body">
-                <div >
+                <div>
                     <label>ID: </label>
-                    <label th:text="${post.id}"></label>
+                    <label th:text="${postdto.id}"></label>
                 </div>
                 <div class="form-group">
                     <label>Title : </label>
-                    <label th:text="${post.title}"></label>
+                    <label th:text="${postdto.title}"></label>
                 </div>
                 <div class="form-group">
                     <label>Content : </label>
-                    <label th:text="${post.content}"></label>
+                    <label th:text="${postdto.content}"></label>
                 </div>
                 <div class="form-group">
-                    <label>Imagee : </label>
-                    <label th:text="${post.image}"></label>
+                    <label>Image : </label>
+                    <img th:src="'data:image/jpeg;base64,' + ${postdto.image}" style="width: 100px; height: 100px;" />
                 </div>
             </div>
         </div>

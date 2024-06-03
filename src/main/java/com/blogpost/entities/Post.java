@@ -20,15 +20,19 @@ public class Post {
     private String title;
     @NonNull
     private String content;
-    @OneToOne
+    @ManyToOne
     private User author;
-    @OneToMany
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
     @ManyToOne
     private Category category;
     private String image;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<User> likedBy;
     private Date postedOn;
+
+    public boolean isLikedByUser(User user) {
+        return likedBy.contains(user);
+    }
 
 }

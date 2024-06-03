@@ -21,12 +21,14 @@
             </form>
         </div>
 
+        <a th:href="@{/form}">Add Post</a>
+
         <div>
             <h1>Test</h1>
             <table border="1">
                 <thead>
                      <tr>
-                         <th>ID</th><th>title</th><th>Images</th><th>content</th>
+                         <th>ID</th><th>title</th><th>author</th><th>Images</th>
                      </tr>
                 </thead>
 
@@ -34,11 +36,13 @@
                     <tr th:each = "p:${listPosts}">
                         <td th:text="${p.id}"></td>
                         <td th:text="${p.title}"></td>
+                        <td th:text="${p.author.username}"></td>
                         <td>
 
                             <img th:src="@{'/images/' + ${p.image}}" style="width: 100px; height: 100px;" >
                         </td>
-                         <td th:text="${p.content}"></td>
+                         <td><a th:href="@{'/post/' + ${p.id}}">View</a></td>
+
                         <td><a th:href="@{edit(id=${p.id})}">Edit</a></td>
                         <td><a onclick="return alert('etes vous sure?')"
                         th:href="@{delete(id=${p.id},page=${pagesCourante},size=${size},motcle=${size})}" >Delete</a></td>

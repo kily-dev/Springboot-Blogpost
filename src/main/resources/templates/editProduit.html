@@ -15,6 +15,7 @@
             <div >Saisie d'un poste</div> <br/>
             <div >
                 <form method="post" enctype="multipart/form-data" th:object="${postDTO}">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                     <div class="form-group">
                         <label class="control-label">ID: </label>
                         <input  type="text" name="id" th:value="${post.id}">

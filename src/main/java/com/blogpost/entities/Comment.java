@@ -1,10 +1,7 @@
 package com.blogpost.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -17,10 +14,12 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne
+    @ManyToOne
     private Post post;
-    @OneToOne
+    @ManyToOne
     private User author;
+    @Column(nullable = false)
     private String content;
+    @Column(nullable = false)
     private LocalDateTime creationDate;
 }

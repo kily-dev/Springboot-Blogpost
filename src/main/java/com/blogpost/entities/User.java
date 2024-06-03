@@ -24,8 +24,8 @@ public class User {
     private String email;
     private String phone;
     private String address;
-    @OneToMany
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
-    @OneToMany
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 }

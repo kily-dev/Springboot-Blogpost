@@ -13,6 +13,7 @@
         <div class="panel panel-default">
             <div>Confirmation</div> <br/>
             <div class="panel-body">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                 <div>
                     <label>ID: </label>
                     <label th:text="${postdto.id}"></label>

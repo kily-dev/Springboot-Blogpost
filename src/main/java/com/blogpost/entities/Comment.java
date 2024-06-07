@@ -15,8 +15,10 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
+    @ToString.Exclude
     private Post post;
     @ManyToOne
+    @ToString.Exclude
     private User author;
     @Column(nullable = false)
     private String content;

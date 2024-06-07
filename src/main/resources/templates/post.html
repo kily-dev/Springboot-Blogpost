@@ -28,7 +28,7 @@
             <table border="1">
                 <thead>
                      <tr>
-                         <th>ID</th><th>title</th><th>author</th><th>Images</th>
+                         <th>ID</th><th>title</th><th>Category</th><th>author</th><th>Images</th>
                      </tr>
                 </thead>
 
@@ -36,6 +36,8 @@
                     <tr th:each = "p:${listPosts}">
                         <td th:text="${p.id}"></td>
                         <td th:text="${p.title}"></td>
+                        <td th:unless="${p.category == null}" th:text="${p.category.categoryName}"></td>
+                        <td th:if="${p.category == null}">null</td>
                         <td th:text="${p.author.username}"></td>
                         <td>
 

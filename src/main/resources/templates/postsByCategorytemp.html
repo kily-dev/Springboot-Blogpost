@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Posts by Category</title>
+</head>
+<body>
+<div>
+	<h1 th:text="'Posts in ' + ${categoryName}"></h1>
+	<table border="1">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Image</th>
+			<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="post : ${posts}">
+			<td th:text="${post.id}"></td>
+			<td th:text="${post.title}"></td>
+			<td th:text="${post.author.username}"></td>
+			<td>
+				<img th:src="@{'/images/' + ${post.image}}" style="width: 100px; height: 100px;">
+			</td>
+			<td>
+				<a th:href="@{'/post/' + ${post.id}}">View</a>
+				<a th:href="@{'/edit/' + ${post.id}}">Edit</a>
+				<a onclick="return confirm('Are you sure?')"
+				   th:href="@{'/delete/' + ${post.id}}">Delete</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

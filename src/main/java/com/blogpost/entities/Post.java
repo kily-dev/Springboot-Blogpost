@@ -19,14 +19,20 @@ public class Post {
     @NonNull
     private String title;
     @NonNull
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
     @ManyToOne
+    @ToString.Exclude
     private User author;
+    @ToString.Exclude
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
     @ManyToOne
+    @ToString.Exclude
     private Category category;
     private String image;
+    @ToString.Exclude
     @ManyToMany(cascade = CascadeType.ALL)
     private List<User> likedBy;
     private Date postedOn;

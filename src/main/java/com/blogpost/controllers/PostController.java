@@ -5,6 +5,7 @@ import com.blogpost.dtos.PostDTO;
 import com.blogpost.entities.Post;
 import com.blogpost.entities.User;
 import com.blogpost.repositories.UserRepository;
+import com.blogpost.services.CategoryService;
 import com.blogpost.services.CommentService;
 import com.blogpost.services.PostService;
 import jakarta.validation.Valid;
@@ -31,6 +32,9 @@ public class PostController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @GetMapping("/post/{id}")
     public String getPostById(@PathVariable int id, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -43,7 +47,7 @@ public class PostController {
             model.addAttribute("commentDTO", new CommentDTO());
             model.addAttribute("comments", postOptional.get().getComments());
             model.addAttribute("currentUser", currentUser);
-            return "postDetails";
+            return "blog";
         } else {
             return "redirect:/index";
         }
@@ -55,7 +59,7 @@ public class PostController {
 
 
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/blogs")
     public String index(Model model,
                         @RequestParam(name = "page", defaultValue = "0") int p,
                         @RequestParam(name = "size", defaultValue = "3") int s,
@@ -73,15 +77,16 @@ public class PostController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String delete(int id, String motcle, int page, int size) {
+    public String delete(int id) {
         postService.deletePost(id);
-        return "redirect:/index?page=" + page + "&size=" + size + "&motcle=" + motcle;
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public String formPost(Model model) {
         PostDTO postDTO = new PostDTO();
         model.addAttribute("postDTO", postDTO);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "formPost";
     }
 
@@ -98,7 +103,7 @@ public class PostController {
             return "formPost";
         }
 
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
@@ -140,8 +145,32 @@ public class PostController {
     }
 
     @RequestMapping(value = "/")
-    public String home() {
-        return "redirect:/index";
+    public String home(Model model) {
+        int p = 0, s = 10;
+        Page<Post> latestPosts = postService.getLatestPosts(p, s);
+        model.addAttribute("posts", latestPosts.getContent());
+        int[] pages = new int[latestPosts.getTotalPages()];
+        model.addAttribute("pages", pages);
+        model.addAttribute("size", s);
+        model.addAttribute("pagesCourante", p);
+
+
+        return "homepage";
+    }
+
+    @RequestMapping(value = "/blog")
+    public String home(Model model,
+                       @RequestParam(name = "page", defaultValue = "0") int p) {
+        int s = 10;
+        Page<Post> latestPosts = postService.getLatestPosts(p, s);
+        model.addAttribute("posts", latestPosts.getContent());
+        int[] pages = new int[latestPosts.getTotalPages()];
+        model.addAttribute("pages", pages);
+        model.addAttribute("size", s);
+        model.addAttribute("pagesCourante", p);
+        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("here","All Posts");
+        return "postsByCategory";
     }
 
     @RequestMapping(value = "/latest", method = RequestMethod.GET)
@@ -170,6 +199,16 @@ public class PostController {
         model.addAttribute("pagesCourante", p);
 
         return "post";
+    }
+
+    @RequestMapping(value = "/tailwind")
+    public String tailwind(Model model){
+        return "postsByCategory";
+    }
+
+    @RequestMapping("/about")
+    public String about(){
+        return "about";
     }
 }
 

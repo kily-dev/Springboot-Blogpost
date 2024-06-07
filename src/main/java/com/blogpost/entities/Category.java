@@ -2,10 +2,10 @@ package com.blogpost.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.OneToMany;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -15,4 +15,7 @@ import lombok.NoArgsConstructor;
 public class Category {
     @Id
     private String categoryName;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "category")
+    private List<Post> posts;
 }

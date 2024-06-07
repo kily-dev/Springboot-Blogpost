@@ -29,166 +29,30 @@
 							<use xlink:href="#logo_svg__c" fill="url(#logo_svg__d)"></use>
 						</svg>
 					</div>
-					<div class="hidden h-6 text-2xl font-semibold sm:block">TailwindBlog</div>
+					<div class="hidden h-6 text-2xl font-semibold sm:block">SpringBlog</div>
 				</div>
 			</a></div>
 			<div class="flex items-center space-x-4 leading-5 sm:space-x-6"><a
 					class="hidden font-medium text-gray-900  sm:block" href="/blog">Blog</a><a
-					class="hidden font-medium text-gray-900  sm:block" href="/tags">Tags</a><a
-					class="hidden font-medium text-gray-900  sm:block" href="/projects">Projects</a><a
+					class="hidden font-medium text-gray-900  sm:block" href="/categories">Categories</a><a
 					class="hidden font-medium text-gray-900  sm:block" href="/about">About</a>
-				<button aria-label="Search">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-					     stroke="currentColor" class="h-6 w-6 text-gray-900 ">
-						<path stroke-linecap="round" stroke-linejoin="round"
-						      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
-					</svg>
-				</button>
-				<div class="mr-5">
-					<div class="relative inline-block text-left" data-headlessui-state="">
-						<div>
-							<button id="headlessui-menu-button-:Rn6jaja:" type="button" aria-haspopup="menu"
-							        aria-expanded="false" data-headlessui-state="">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-								     class="h-6 w-6 text-gray-900 ">
-									<path fill-rule="evenodd"
-									      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-									      clip-rule="evenodd"></path>
-								</svg>
-							</button>
-						</div>
-					</div>
-				</div>
-				<button aria-label="Toggle Menu" class="sm:hidden">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-					     class="h-8 w-8 text-gray-900 ">
-						<path fill-rule="evenodd"
-						      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-						      clip-rule="evenodd"></path>
-					</svg>
-				</button>
-				<div class="fixed left-0 top-0 z-10 h-full w-full transform bg-white opacity-95 duration-300 ease-in-out   translate-x-full">
-					<div class="flex justify-end">
-						<button class="mr-8 mt-11 h-8 w-8" aria-label="Toggle Menu">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-							     class="text-gray-900 ">
-								<path fill-rule="evenodd"
-								      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-								      clip-rule="evenodd"></path>
-							</svg>
-						</button>
-					</div>
-					<nav class="fixed mt-8 h-full">
-						<div class="px-12 py-4"><a
-								class="text-2xl font-bold tracking-widest text-gray-900 " href="/">Home</a>
-						</div>
-						<div class="px-12 py-4"><a
-								class="text-2xl font-bold tracking-widest text-gray-900 "
-								href="/blog">Blog</a></div>
-						<div class="px-12 py-4"><a
-								class="text-2xl font-bold tracking-widest text-gray-900 "
-								href="/tags">Tags</a></div>
-						<div class="px-12 py-4"><a
-								class="text-2xl font-bold tracking-widest text-gray-900 "
-								href="/projects">Projects</a></div>
-						<div class="px-12 py-4"><a
-								class="text-2xl font-bold tracking-widest text-gray-900 "
-								href="/about">About</a></div>
-					</nav>
-				</div>
+				<a href="/logout" class="inline-block px-10 py-4 text-lg sm:block font-bold text-white bg-gradient-to-r from-red-500 to-red-700 rounded-full shadow-lg transform transition-transform duration-300 hover:from-red-600 hover:to-red-800 hover:scale-105 active:from-red-700 active:to-red-900">
+					Logout
+				</a>
+
+
 			</div>
 		</header>
 		<main class="mb-auto">
 			<div class="flex flex-col items-start justify-start divide-y divide-gray-200  md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6 md:divide-y-0">
 				<div class="space-x-2 pb-8 pt-6 md:space-y-5"><h1
 						class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900  sm:text-4xl sm:leading-10 md:border-r-2 md:px-6 md:text-6xl md:leading-14">
-					Tags</h1></div>
+					Categories</h1></div>
 				<div class="flex max-w-lg flex-wrap">
-					<div class="mb-2 mr-5 mt-2"><a
+					<div class="mb-2 mr-5 mt-2" th:each="category : ${categories}"><a
 							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/next-js">next-js</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged next-js" href="/tags/next-js"> (6)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/guide">guide</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged guide" href="/tags/guide"> (5)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/tailwind">tailwind</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged tailwind" href="/tags/tailwind"> (3)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/feature">feature</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged feature" href="/tags/feature"> (2)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/markdown">markdown</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged markdown" href="/tags/markdown"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/code">code</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged code" href="/tags/code"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/features">features</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged features" href="/tags/features"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/math">math</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged math" href="/tags/math"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/ols">ols</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged ols" href="/tags/ols"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/github">github</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged github" href="/tags/github"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/holiday">holiday</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged holiday" href="/tags/holiday"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/canada">canada</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged canada" href="/tags/canada"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/images">images</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged images" href="/tags/images"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/writings">writings</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged writings" href="/tags/writings"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/book">book</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged book" href="/tags/book"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/reflection">reflection</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged reflection" href="/tags/reflection"> (1)</a></div>
-					<div class="mb-2 mr-5 mt-2"><a
-							class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-							href="/tags/multi-author">multi-author</a><a
-							class="-ml-2 text-sm font-semibold uppercase text-gray-600 "
-							aria-label="View posts tagged multi-author" href="/tags/multi-author"> (1)</a></div>
+							th:href="@{'/categories/'+${category.categoryName}+'/posts'}"
+							th:text="${category.categoryName} + ' (' + ${category.getPosts().size()} +')'">next-js</a></div>
 				</div>
 			</div>
 		</main>

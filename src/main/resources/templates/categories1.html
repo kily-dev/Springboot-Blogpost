@@ -1,0 +1,67 @@
+<!-- categories.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Categories</title>
+	<link href="/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+<div class="container mx-auto p-4">
+	<header class="flex items-center justify-between py-10">
+		<div><a aria-label="TailwindBlog" href="/">
+			<div class="flex items-center justify-between">
+				<div class="mr-3">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53.87"
+					     height="43.61" viewBox="344.564 330.278 111.737 91.218">
+						<defs>
+							<linearGradient id="logo_svg__b" x1="420.97" x2="420.97" y1="331.28" y2="418.5"
+							                gradientUnits="userSpaceOnUse">
+								<stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1"></stop>
+								<stop offset="100%" style="stop-color:#67e8f9;stop-opacity:1"></stop>
+							</linearGradient>
+							<linearGradient id="logo_svg__d" x1="377.89" x2="377.89" y1="331.28" y2="418.5"
+							                gradientUnits="userSpaceOnUse">
+								<stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1"></stop>
+								<stop offset="100%" style="stop-color:#67e8f9;stop-opacity:1"></stop>
+							</linearGradient>
+							<path id="logo_svg__a" d="M453.3 331.28v28.57l-64.66 58.65v-30.08z"></path>
+							<path id="logo_svg__c" d="M410.23 331.28v28.57l-64.67 58.65v-30.08z"></path>
+						</defs>
+						<use xlink:href="#logo_svg__a" fill="url(#logo_svg__b)"></use>
+						<use xlink:href="#logo_svg__c" fill="url(#logo_svg__d)"></use>
+					</svg>
+				</div>
+				<div class="hidden h-6 text-2xl font-semibold sm:block">SpringBlog</div>
+			</div>
+		</a></div>
+		<div class="flex items-center space-x-4 leading-5 sm:space-x-6"><a
+				class="hidden font-medium text-gray-900  sm:block" href="/blog">Blog</a><a
+				class="hidden font-medium text-gray-900  sm:block" href="/categories">Categories</a><a
+				class="hidden font-medium text-gray-900  sm:block" href="/about">About</a>
+			<a href="/logout" class="inline-block px-10 py-4 text-lg sm:block font-bold text-white bg-gradient-to-r from-red-500 to-red-700 rounded-full shadow-lg transform transition-transform duration-300 hover:from-red-600 hover:to-red-800 hover:scale-105 active:from-red-700 active:to-red-900">
+				Logout
+			</a>
+
+
+		</div>
+	</header>
+	<h1 class="text-4xl font-bold mb-8 text-center text-blue-700">All Categories</h1>
+	<ul class="bg-white shadow-lg rounded-lg p-6">
+		<li th:each="category : ${categories}" class="flex justify-between items-center border-b py-4 last:border-none">
+			<span th:text="${category.categoryName}" class="text-lg font-medium text-gray-900"></span>
+			<div>
+				<a th:href="@{'/categories/edit/'+${category.categoryName}}" class="text-blue-500 hover:text-blue-700 mr-4">Edit</a>
+				<a th:href="@{'/categories/delete/'+${category.categoryName}}" class="text-red-500 hover:text-red-700">Delete</a>
+			</div>
+		</li>
+	</ul>
+	<div class="text-center mt-8">
+		<a href="/categories/create" class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 hover:from-blue-600 hover:to-blue-800 active:from-blue-700 active:to-blue-900">
+			Add New Category
+		</a>
+	</div>
+</div>
+</body>
+</html>
+

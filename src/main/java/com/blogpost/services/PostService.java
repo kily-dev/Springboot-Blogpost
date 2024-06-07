@@ -1,8 +1,10 @@
 package com.blogpost.services;
 
 import com.blogpost.dtos.PostDTO;
+import com.blogpost.entities.Category;
 import com.blogpost.entities.Post;
 import com.blogpost.entities.User;
+import com.blogpost.repositories.CategoryRepository;
 import com.blogpost.repositories.PostRepository;
 import com.blogpost.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class PostService {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     public void likePost(int postId, String username) {
         Optional<Post> optionalPost = postRepository.findById(postId);
@@ -66,9 +71,12 @@ public class PostService {
         Optional<Post> postToBeDeleted = postRepository.findById(id);
         if (postToBeDeleted.isPresent()) {
             if (postToBeDeleted.get().getAuthor() == user.get()) {
+                user.get().getPosts().remove(postToBeDeleted.get());
                 postRepository.deleteById(id);
             }
         }
+
+
 
 
     }
@@ -107,6 +115,15 @@ public class PostService {
 
         // Set the current user as the author of the post
         post.setAuthor(user.get());
+
+        user.get().getPosts().add(post);
+
+        // Set the category of the post if provided
+        if (postDTO.getCategory() != null && !postDTO.getCategory().isEmpty()) {
+            Category category = categoryRepository.findByCategoryName(postDTO.getCategory());
+            post.setCategory(category);
+            category.getPosts().add(post);
+        }
 
         return postRepository.save(post);
     }

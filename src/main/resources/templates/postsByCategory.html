@@ -1,7 +1,21 @@
+<html lang="en-us" class="__variable_587f35 scroll-smooth light" style="color-scheme: light;">
 <head>
-	<link rel="stylesheet" href="output.css">
+	<link rel="stylesheet" href="/output.css">
 </head>
-<body class="bg-white pl-[calc(100vw-100%)] text-black antialiased  ">
+<body class="bg-white pl-[calc(100vw-100%)] text-black antialiased  " style="">
+<script>
+    !function () {
+        try {
+            var d = document.documentElement, c = d.classList;
+            c.remove('dark');
+            c.add('light');
+            d.style.colorScheme = 'light';
+        } catch (e) {
+            console.error(e);
+        }
+    }()
+</script>
+
 <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
 	<div class="flex h-screen flex-col justify-between font-sans">
 		<header class="flex items-center justify-between py-10">
@@ -43,62 +57,81 @@
 			</div>
 		</header>
 		<main class="mb-auto">
-			<div class="divide-y divide-gray-200 ">
-				<div class="space-y-2 pb-8 pt-6 md:space-y-5"><h1
-						class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900  sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-					Latest</h1>
-					<p class="text-lg leading-7 text-gray-500 ">A blog created with Springboot</p>
-					<a href="/form" class="inline-block px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full shadow-lg transform transition-all duration-300 hover:from-blue-600 hover:to-indigo-600 hover:scale-105 active:from-blue-700 active:to-indigo-700">
-						Add new Post
-					</a>
-				</div>
+			<div>
+				<div class="pb-6 pt-6"><h1
+						class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900  sm:hidden sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+					All Posts</h1></div>
+				<div class="flex sm:space-x-24">
+					<div class="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md   sm:flex">
+						<div class="px-6 py-4"><h3 class="font-bold uppercase text-primary-500"
+						                           >
+							<a href="/blog">All posts</a> </h3>
+							<ul>
+								<li class="my-3" th:each="category : ${categories}"><a
+										class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500  "
+										aria-label="View posts tagged next-js" th:href="@{'/categories/'+${category.categoryName}+'/posts'}"
+										th:text="${category.categoryName} + ' (' + ${category.getPosts().size()} +')'"></a></li>
 
+							</ul>
+						</div>
+					</div>
+					<div>
+						<h2
+								class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900  sm:text-4xl sm:leading-10 md:text-6xl md:leading-14"
+								th:text="${here}">
+							</h2>
+						<ul>
+							<li th:each="post : ${posts}" class="py-5">
+								<article class="flex flex-col space-y-2 xl:space-y-0">
 
-				<ul class="divide-y divide-gray-200 ">
-					<li th:each="post : ${posts}" class="py-12">
-						<article>
-							<div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-								<dl>
-									<dt class="sr-only">Published on</dt>
-									<dd class="text-base font-medium leading-6 text-gray-500 ">
-										<time th:datetime="${post.postedOn}" th:text="${#dates.format(post.postedOn, 'EEEE, MMMM d, yyyy')}"></time>
-
-									</dd>
-								</dl>
-								<div class="space-y-5 xl:col-span-3">
-									<div class=" space-x-3 flex">
+									<div class="flex space-x-3">
 										<img th:src="@{'/images/' + ${post.image}}" style=" width: 200px; height: 150px; object-fit: cover;">
 										<div><h2 class="text-2xl font-bold leading-8 tracking-tight"><a
 												class="text-gray-900 "
 												th:text="${post.title}"
 												th:href="@{'/post/' + ${post.id}}"></a></h2>
-											<div class="flex flex-wrap" th:if="${post.category != null}"><a
-													class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 "
-													th:text="${post.category.categoryName}"
-													th:href="@{'/categories/'+${post.category.categoryName}+'/posts'}"></a></div>
-											<div
-													class="text-base font-medium  text-gray-500 "
-													th:text="'Published by ' + ${post.author.username}"></div>
+											<div class="flex flex-wrap" th:if="${post.category != null}">
+												<a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600"
+												   th:text="${post.category.categoryName}"
+												   th:href="@{'/categories/'+${post.category.categoryName}+'/posts'}">
+												</a>
+											</div>
+											<dl>
+												<dt class="sr-only">Published on</dt>
+												<dd class="text-base font-medium leading-6 text-gray-500 ">
+													<time th:datetime="${post.postedOn}" th:text="'Published by ' + ${post.author.username} + ' on ' + ${#dates.format(post.postedOn, 'EEEE, MMMM d, yyyy')}"></time>
+
+												</dd>
+											</dl>
+										</div>
+										<div class="prose max-w-none text-gray-500 ">
 										</div>
 									</div>
-									<div class="text-base font-medium leading-6"><a
-											class="text-primary-500 hover:text-primary-600 "
-											th:href="@{'/post/' + ${post.id}}">Read more →</a>
-									</div>
-								</div>
-							</div>
-						</article>
-					</li>
+								</article>
+							</li>
 
-				</ul>
-			</div>
-			<div class="flex justify-end text-base font-medium leading-6"><a
-					class="text-primary-500 hover:text-primary-600 " aria-label="All posts"
-					href="/blog">All Posts →</a></div>
-			<div class="flex items-center justify-center pt-4">
-				<div>
+						</ul>
+						<div class="space-y-2 pb-8 pt-6 md:space-y-5">
+							<nav class="flex justify-between">
+								<a th:if="${pagesCourante > 1}"
+								   th:href="@{|/categories/${categoryName}/posts?page=${pagesCourante - 1}}"
+								   class="enabled:opacity-100">Previous</a>
+								<button th:if="${pagesCourante <= 1}"
+								        class="cursor-auto disabled:opacity-50"
+								        disabled>Previous</button>
 
+								<span th:text="${pagesCourante} + ' of ' + ${pages.length}"></span>
 
+								<a th:if="${pagesCourante < pages.length}"
+								   th:href="@{|/categories/${categoryName}/posts?page=${pagesCourante + 1}|}"
+								   class="enabled:opacity-100">Next</a>
+								<button th:if="${pagesCourante >= pages.length}"
+								        class="cursor-auto disabled:opacity-50"
+								        disabled>Next</button>
+							</nav>
+						</div>
+
+					</div>
 				</div>
 			</div>
 		</main>
@@ -107,7 +140,6 @@
 				<div class="mb-3 flex space-x-4"><a class="text-sm text-gray-500 transition hover:text-gray-600"
 				                                    target="_blank" rel="noopener noreferrer"
 				                                    href="mailto:address@yoursite.com"><span class="sr-only">mail</span>
-
 				</a><a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank"
 				       rel="noopener noreferrer" href="https://github.com"><span class="sr-only">github</span>
 
@@ -145,3 +177,4 @@
 </section>
 
 </body>
+</html>

@@ -17,4 +17,8 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     @Query("select p from Post p order by size(p.likedBy) desc")
     Page<Post> findPopularPosts(Pageable pageable);
+
+    @Query("select p from Post p where p.category.categoryName = :categoryName")
+    Page<Post> findByCategoryName(@Param("categoryName") String categoryName, Pageable pageable);
+
 }

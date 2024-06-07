@@ -1,5 +1,6 @@
 package com.blogpost.dtos;
 
+import jakarta.persistence.Lob;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
@@ -14,7 +15,7 @@ public class PostDTO {
     private String title;
     @NotEmpty(message="Content is required.")
     @Size(min = 300, message = "Content should be atleast 300 characters.")
-    @Size(max = 2000, message = "Content cannot exceed 2000 characters.")
+    @Lob
     private String content;
     private String category;
     private MultipartFile image;
